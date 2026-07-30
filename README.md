@@ -394,7 +394,7 @@ This project demonstrates practical implementation of:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/ai-resume-screening.git
+git clone https://github.com/<pikachu-matrix>/ai-resume-screening.git
 ```
 
 ### Navigate to the Project
@@ -448,8 +448,6 @@ This project is intended for educational, research, and portfolio purposes.
 ---
 
 ## Author
-
-**Ranjan**
 
 Engineering Researcher | AI Engineer | Generative AI | RAG | FastAPI | React | Python
 
