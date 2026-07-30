@@ -15,4 +15,5 @@ class JobService:
             message="Job Description received successfully.",
             job_title=job.job_title,
             company_name=job.company_name,
+            
         )
