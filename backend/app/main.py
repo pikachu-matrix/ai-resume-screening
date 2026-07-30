@@ -22,3 +22,4 @@ def read_home():
     return {
     "message": "Welcome to thr AI Resume Screening API."
         }
+
