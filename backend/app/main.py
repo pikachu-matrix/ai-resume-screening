@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from app.api.health import health_router
+from app.api.jobs import job_router
+
 
 
 application=FastAPI(
@@ -8,6 +10,10 @@ description="Backend API for Resume Screening and Candidate Ranking.",
 version="1.0.0"
 )
 application.include_router(health_router)
+application.include_router(job_router)
+
+
+
 
 @application.get("/")
 def read_home():
