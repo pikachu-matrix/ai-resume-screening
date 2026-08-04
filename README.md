@@ -1,84 +1,56 @@
-# ai-resume-screening
-AI-powered Resume Screening and Candidate Ranking System using FastAPI, React, RAG, LLMs, Vector Database, and Docker.
+# AI Resume Screening System
 
-# AI Resume Screening & Candidate Ranking System
+An end-to-end AI-powered Resume Screening System that automatically processes resumes, extracts text, generates semantic embeddings, and ranks candidates based on their similarity to a job description.
 
-An AI-powered recruitment platform that helps recruiters screen, compare, and rank multiple candidates against a single Job Description (JD). The system uses Resume Parsing, Retrieval-Augmented Generation (RAG), Vector Search, and Large Language Models (LLMs) to provide intelligent candidate matching with transparent explanations.
-
----
-
-## Overview
-
-Hiring teams often spend hours manually reviewing resumes for a single job opening. This project automates much of that process by extracting candidate information, understanding job requirements, comparing resumes semantically, and generating explainable rankings.
-
-The application is designed as a production-style full-stack AI system that demonstrates modern software engineering practices, scalable architecture, and Generative AI integration.
+This project is being built step by step using production-style software engineering practices with FastAPI, FAISS, Sentence Transformers, and PostgreSQL.
 
 ---
 
-## Features
+# Current Progress
 
-- Upload a single Job Description
-- Upload multiple resumes (PDF/DOCX)
-- Automatic resume parsing
-- Candidate information extraction
-- Semantic similarity using embeddings
-- Vector database storage
-- Retrieval-Augmented Generation (RAG)
-- AI-powered resume analysis
-- Candidate ranking
-- Skill gap analysis
-- Experience comparison
-- Education comparison
-- Recruiter dashboard
-- PDF/CSV report generation
-- Authentication & user management
-- Dockerized deployment
-- Cloud-ready architecture
+**Project Completion:** 45%
+
+## Completed Modules
+
+- FastAPI Backend
+- Modular Project Architecture
+- Job Description API
+- Resume Upload API
+- Resume Parser (PDF & DOCX)
+- Text Cleaning
+- Text Chunking
+- Sentence Embeddings
+- FAISS Vector Search
+- Metadata Storage
+- Candidate Ranking Engine (Chunk Level)
 
 ---
 
-# System Workflow
+# System Architecture
 
 ```
-
-Recruiter
-│
-├── Upload Job Description
-│
-├── Upload Multiple Resumes
-│
-▼
-
-Resume Parsing
-│
-▼
-
-Text Preprocessing
-│
-▼
-
-Embedding Generation
-│
-▼
-
-Vector Database
-│
-▼
-
-RAG Retrieval
-│
-▼
-
-LLM Analysis
-│
-▼
-
+Resume Upload
+      │
+      ▼
+Resume Parser
+      │
+      ▼
+Text Cleaner
+      │
+      ▼
+Text Chunking
+      │
+      ▼
+Sentence Embeddings
+      │
+      ▼
+FAISS Vector Database
+      │
+      ▼
+Semantic Search
+      │
+      ▼
 Candidate Ranking
-│
-▼
-
-Recruiter Dashboard
-
 ```
 
 ---
@@ -87,373 +59,249 @@ Recruiter Dashboard
 
 ## Backend
 
-- Python
+- Python 3.12
 - FastAPI
-- SQLAlchemy
-- Pydantic
-
-## Frontend
-
-- React
-- HTML
-- CSS
-- JavaScript
+- Uvicorn
 
 ## AI & NLP
 
-- OpenAI GPT
-- Azure OpenAI
-- Prompt Engineering
 - Sentence Transformers
-- BGE Embeddings
-
-## RAG
-
-- LangChain
-- LlamaIndex
-
-## Vector Database
-
-- ChromaDB
+- all-MiniLM-L6-v2
 - FAISS
-
-## Database
-
-- PostgreSQL
-- SQLite (Development)
+- NumPy
 
 ## Resume Parsing
 
-- PyMuPDF
-- pdfplumber
+- PyPDF
 - python-docx
 
-## Deployment
+## Database *(Upcoming)*
+
+- PostgreSQL
+- SQLAlchemy
+
+## Deployment *(Upcoming)*
 
 - Docker
 - Docker Compose
-- Kubernetes
-- Azure / AWS
-
----
-
-# Project Architecture
-
-```
-
-Frontend (React)
-│
-
-REST API
-
-│
-Backend (FastAPI)
-│
-├── Authentication
-├── Resume Upload
-├── Job Description API
-├── Resume Parser
-├── Text Processing
-├── Embedding Service
-├── Vector Search
-├── RAG Pipeline
-├── LLM Service
-├── Ranking Engine
-└── Report Generator
-
-│
-
-PostgreSQL
-
-ChromaDB
-
-OpenAI API
-
-```
+- AWS
 
 ---
 
 # Project Structure
 
 ```
-
-ai-resume-screening/
-
-├── backend/
-│   ├── app/
-│   │   ├── api/
-│   │   ├── auth/
-│   │   ├── parser/
-│   │   ├── preprocessing/
-│   │   ├── embeddings/
-│   │   ├── rag/
-│   │   ├── ranking/
-│   │   ├── database/
-│   │   ├── models/
-│   │   ├── schemas/
-│   │   ├── services/
-│   │   ├── utils/
-│   │   └── main.py
+backend/
+│
+├── app/
+│   ├── api/
+│   ├── core/
+│   ├── models/
+│   ├── schemas/
+│   ├── services/
 │   │
-│   ├── tests/
-│   ├── requirements.txt
-│   └── Dockerfile
+│   ├── main.py
+│   │
+│   └── ...
 │
-├── frontend/
+├── uploads/
+├── test_upload.py
+├── test_parser.py
+├── test_cleaner.py
+├── test_chunk.py
+├── test_embedding.py
+├── test_vector.py
+├── test_ranking.py
 │
-├── database/
-│
-├── docker/
-│
-├── kubernetes/
-│
-├── docs/
-│
-├── README.md
-│
-└── .gitignore
-
+├── requirements.txt
+└── venv/
 ```
 
 ---
 
-# Core Components
+# Features Implemented
 
-- Authentication
-- Resume Upload
-- Job Description Management
-- Resume Parsing
-- Text Cleaning
-- Candidate Information Extraction
-- Embedding Generator
-- Vector Database
-- RAG Retrieval
-- LLM Analysis
-- Candidate Ranking
-- Dashboard
-- Report Export
+## Resume Upload
+
+- Upload one or multiple resumes
+- PDF support
+- DOCX support
 
 ---
 
-# AI Pipeline
+## Resume Parsing
+
+- Extract text from PDF
+- Extract text from DOCX
+
+---
+
+## Text Cleaning
+
+- Remove unwanted spaces
+- Remove tabs
+- Remove non-printable characters
+- Normalize text
+
+---
+
+## Chunking
+
+- Configurable chunk size
+- Configurable overlap
+- AI-ready chunk generation
+
+---
+
+## Embeddings
+
+Model Used
 
 ```
+sentence-transformers/all-MiniLM-L6-v2
+```
 
-Resume
-│
-▼
+Each chunk is converted into a **384-dimensional embedding vector**.
 
-Extract Text
-│
-▼
+---
 
-Clean Text
-│
-▼
+## Vector Search
 
-Generate Embeddings
-│
-▼
+Using **FAISS** for semantic similarity search.
 
-Store in ChromaDB
-│
-▼
+Stored Information
 
-Retrieve Relevant Sections
-│
-▼
+- Candidate Name
+- Resume Name
+- Chunk Number
+- Chunk Text
+- Embedding Vector
 
-LLM Comparison
-│
-▼
+---
 
-Generate Match Score
-│
-▼
+## Candidate Ranking
 
-Rank Candidates
+Current Version
 
+- Semantic Search
+- Top Matching Resume Chunks
+
+Upcoming
+
+- Overall Candidate Score
+- Match Percentage
+- Skill Matching
+- Experience Matching
+
+---
+
+# APIs
+
+## Health Check
+
+```
+GET /health
 ```
 
 ---
 
-# Candidate Evaluation
+## Job Description
 
-Each candidate is evaluated based on:
-
-- Technical Skills
-- Soft Skills
-- Work Experience
-- Education
-- Certifications
-- Project Relevance
-- Semantic Similarity
-- Overall Job Fit
-
-The system provides explainable results instead of simply assigning a score.
+```
+POST /jobs
+```
 
 ---
 
-# Security & Responsible AI
+## Resume Upload
 
-The application is designed to assist recruiters and not replace human decision-making.
-
-The system intentionally ignores sensitive personal attributes such as:
-
-- Age
-- Gender
-- Religion
-- Nationality
-- Marital Status
-- Photograph
-
-Candidate rankings are based only on job-related qualifications and experience.
+```
+POST /resumes/upload
+```
 
 ---
 
-# Learning Objectives
+# Upcoming Roadmap
 
-This project demonstrates practical implementation of:
-
-- Python
-- FastAPI
-- REST APIs
-- React
-- SQL
-- PostgreSQL
+- Candidate Score Aggregation
+- PostgreSQL Integration
+- SQLAlchemy ORM
+- Persistent FAISS Index
+- Resume Processing Pipeline
+- Job Processing Pipeline
+- Complete Ranking API
+- JWT Authentication
+- React Frontend
+- Recruiter Dashboard
 - Docker
-- Kubernetes
-- Git & GitHub
-- Prompt Engineering
-- Retrieval-Augmented Generation (RAG)
-- Embeddings
-- Vector Databases
-- Resume Parsing
-- LLM Integration
-- Cloud Deployment
+- Docker Compose
+- CI/CD
+- AWS Deployment
+- Monitoring & Logging
+- Unit Testing
+- Integration Testing
+- Production Optimization
 
 ---
 
-# Future Improvements
+# Installation
 
-- Multi-language resume support
-- OCR for scanned resumes
-- Interview question generation
-- Candidate chat assistant
-- Recruiter analytics dashboard
-- Email integration
-- Calendar scheduling
-- ATS integration
-- Resume recommendations
-- Fine-tuned domain-specific models
-
----
-
-# Development Roadmap
-
-### Phase 1
-
-- Backend Setup
-- FastAPI
-- Resume Upload API
-
-### Phase 2
-
-- Resume Parsing
-- Text Extraction
-- Preprocessing
-
-### Phase 3
-
-- LLM Integration
-- Prompt Engineering
-- Resume vs JD Comparison
-
-### Phase 4
-
-- Embeddings
-- ChromaDB
-- RAG Pipeline
-
-### Phase 5
-
-- Ranking Engine
-- Dashboard
-- Reports
-
-### Phase 6
-
-- Docker
-- Kubernetes
-- Cloud Deployment
-
----
-
-# Getting Started
-
-### Clone the Repository
+Clone the repository
 
 ```bash
-git clone https://github.com/<pikachu-matrix>/ai-resume-screening.git
+git clone https://github.com/pikachu-matrix/ai-resume-screening.git
 ```
 
-### Navigate to the Project
+Move into backend
 
 ```bash
-cd ai-resume-screening
+cd ai-resume-screening/backend
 ```
 
-### Backend Setup
+Create virtual environment
 
 ```bash
-cd backend
-
 python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-# Linux / macOS
-source venv/bin/activate
-
-pip install -r requirements.txt
-
-uvicorn app.main:app --reload
 ```
 
-### Frontend Setup
+Activate virtual environment
+
+### Windows
 
 ```bash
-cd frontend
+venv\Scripts\activate
+```
 
-npm install
+Install dependencies
 
-npm run dev
+```bash
+pip install -r requirements.txt
+```
+
+Run the server
+
+```bash
+uvicorn app.main:application --reload
+```
+
+Open
+
+```
+http://127.0.0.1:8000/docs
 ```
 
 ---
 
-# Project Status
+# Current Status
 
-🚧 Currently under active development.
+**Development Stage:** AI Backend Foundation Completed
 
-The project is being built incrementally with production-ready architecture, modern AI techniques, and scalable deployment practices.
-
----
-
-# License
-
-This project is intended for educational, research, and portfolio purposes.
+The project currently supports semantic resume search using embeddings and FAISS. The next milestone is implementing candidate score aggregation and complete AI-based candidate ranking.
 
 ---
 
-## Author
+# Author
 
-Engineering Researcher | AI Engineer | Generative AI | RAG | FastAPI | React | Python
+**Ranjan**
 
----
-
-## Acknowledgements
-
-Special thanks to the open-source community and the developers of FastAPI, React, LangChain, ChromaDB, PostgreSQL, Docker, and OpenAI for providing the tools that make this project possible.
-
+Building an end-to-end production-ready AI Resume Screening System from scratch using modern AI, backend, and deployment technologies.
