@@ -1,9 +1,11 @@
 """
-Routing the APIS related to Job Services 
-Response posting 
+Routing the APIs related to Job Services
 """
-from fastapi import APIRouter
 
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+
+from app.database_session import get_db
 from app.schemas.job import (
     JobDescriptionRequest,
     JobDescriptionResponse,
@@ -22,5 +24,6 @@ job_router = APIRouter(
 )
 def create_job(
     job: JobDescriptionRequest,
+    db: Session = Depends(get_db),
 ):
-    return JobService.create_job(job)
+    return JobService.create_job(job, db)

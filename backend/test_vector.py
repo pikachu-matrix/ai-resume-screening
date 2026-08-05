@@ -22,7 +22,12 @@ for chunk in chunks:
 
     vector_db.add_vector(
         embedding,
-        chunk,
+        {
+         "candidate_name": "Amiya Ranjan Kabi",
+         "resume" : "sample.pdf",
+         "chunk_number": len(vector_db.metadata),
+         "text": chunk,  
+        },
     )
 
 query = "Python Machine Learning FastAPI"

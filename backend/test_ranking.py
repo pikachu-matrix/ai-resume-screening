@@ -6,6 +6,7 @@ from app.services.parser import ParserService
 from app.services.ranking_service import RankingService
 from app.services.text_cleaner import TextCleaner
 from app.services.vector_service import VectorService
+from app.services.score_service import ScoreService
 
 # Load resume
 pdf_file = Path(__file__).parent / "sample.pdf"
@@ -42,23 +43,33 @@ Docker,
 REST APIs.
 """
 
-results = RankingService.rank_candidates(
+chunk_results = RankingService.rank_candidates(
     job_description,
     vector_db,
 )
+results = ScoreService.aggregate(chunk_results)
 
 print("=" * 70)
-print("Top Matching Resume Chunks")
+print("Final Candidate Ranking")
 print("=" * 70)
 
-for result in results:
+for rank, candidate in enumerate(results, start=1):
 
-    print(f"Candidate : {result['candidate_name']}")
-    print(f"Resume    : {result['resume']}")
-    print(f"Chunk     : {result['chunk_number']}")
-    print(f"Similarity  : {result['similarity']}%")
-    print()
-
-    print(result["text"])
+    print(f"Rank : {rank}")
+    print(
+        f"Candidate : {candidate['candidate_name']}"
+    )
+    print(
+        f"Resume : {candidate['resume']}"
+    )
+    print(
+        f"Overall Match : {candidate['overall_match']}%"
+    )
+    print(
+        f"Best Chunk : {candidate['best_chunk']}%"
+    )
+    print(
+        f"Matched Chunks : {candidate['matched_chunks']}"
+    )
 
     print("=" * 70)
