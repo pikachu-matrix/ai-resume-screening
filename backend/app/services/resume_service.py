@@ -3,6 +3,8 @@ from pathlib import Path
 from fastapi import UploadFile
 
 from app.services.parser import ParserService
+from sqlalchemy.orm import Session
+from app.services.resume_database_service import ResumeDatabaseService
 
 
 class ResumeService:
@@ -11,7 +13,7 @@ class ResumeService:
 
     @staticmethod
     async def upload_resumes(
-        resumes: list[UploadFile],
+        resumes: list[UploadFile], db:Session,
     ):
 
         ResumeService.UPLOAD_FOLDER.mkdir(exist_ok=True)
@@ -25,8 +27,19 @@ class ResumeService:
             with open(file_path, "wb") as file:
                 file.write(await resume.read())
 
+            resume_record = ResumeDatabaseService.create_resume(
+                db=db,
+                candidate_name=file_path.stem,
+                filename=resume.filename,
+            )
+
             extracted_text = ParserService.extract_text(
                 str(file_path)
+            )
+            ResumeDatabaseService.update_resume_text(
+                db=db,
+                resume_id=resume_record.id,
+                text=extracted_text,
             )
 
             uploaded_files.append(
